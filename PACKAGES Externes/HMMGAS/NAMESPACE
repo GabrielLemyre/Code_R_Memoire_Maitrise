@@ -1,0 +1,10 @@
+useDynLib(HMMGAS)
+
+
+export(function_Sim.Study,simulation, smoothing_GAS,par.trasf_GAS, par.trasf.inv_GAS, stand.error.function_GAS,filtering.single.trasf_GAS,filtering_TVP, smoothing_TVP,par.trasf_TVP, par.trasf.inv_TVP,stand.error.function_TVP,filtering.single.trasf_TVP,filtering.single.trasf_TVPXExo,filtering_TVPXExo, smoothing_TVPXExo,par.trasf_TVPXExo, par.trasf.inv_TVPXExo, stand.error.function_TVPXExo,filtering.single.trasf_TVPXExo,filtering_Const, smoothing_Const,par.trasf_Const, par.trasf.inv_Const,stand.error.function_Const,filtering.single.trasf_Const,sim.ar,MAE.function, MSE.function,MASE.function, MSSE.function)
+
+
+importFrom(stats, median, nlminb, rnorm, sd)
+
+importFrom(statmod, gauss.quad.prob)
+importFrom(numDeriv, hessian)

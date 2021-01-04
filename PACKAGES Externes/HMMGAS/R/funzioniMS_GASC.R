@@ -1,0 +1,61 @@
+smoothing_GAS<-function(p11,p22,X.f, X.flag)
+{
+p12<-1-p11
+p21<-1-p22
+
+T<-nrow(X.f)
+X<-matrix(0, ncol=2, nrow=T)
+
+t=T
+X[t,]<-X.f[t,]
+
+t=T-1
+for (t in ((T-1):1)) 
+{
+P<-matrix(c(p11[t+1],p12[t+1],p21[t+1],p22[t+1]), ncol=2, byrow=T)
+X[t,]<-(P%*%(X[t+1,]/X.flag[t+1,]))*X.f[t,]}
+
+return("X.s"=X)}
+
+
+par.trasf_GAS<-function(par)
+{
+par.t<-par
+par.t[3]<-exp(par[3])
+par.t[c(4,5,8,9)]<-exp(par[c(4,5,8,9)])/(1+exp(par[c(4,5,8,9)]))
+return(par.t)}
+
+par.trasf.inv_GAS<-function(par)
+{par.t<-par
+par.t[3]<-log(par[3])
+par.t[c(4,5,8,9)]<-log(par[c(4,5,8,9)])-log(1-par[c(4,5,8,9)])
+return(par.t)}
+
+
+stand.error.function_GAS<-function(par,hessian)
+{
+H<-hessian
+
+G.d<-rep(1, length(par))
+G.d[c(3)]<-1/par[c(3)]
+G.d[c(4,5,8,9)]<-1/(par[c(4,5,8,9)])+1/(1-par[c(4,5,8,9)])
+G<-matrix(0,length(par),length(par))
+diag(G)<-G.d
+
+se<-diag(solve(G)%*%solve(H)%*%solve(t(G)))^0.5
+
+se	
+}
+
+
+filtering.single.trasf_GAS<-function(par,y,B){
+  
+par.t<-normal.HMM.W2N(par, type="HMM", Transition.Type="GAS")
+print(par.t)
+
+l<-filtering_GAS(par.t,y,B)
+l[1:1]}
+
+
+
+

@@ -1,0 +1,11 @@
+Package: HMMGAS
+Title: Hidden Markov Models with Generalized Autoregressive Score
+Version: 2.0
+Date: 2017-08-08
+Author: Marco Bazzi
+Maintainer: Marco Bazzi <marcobazzi87@gmail.com>
+Description: Fits HMM with time varying transition probabilities modeled as GAS.
+License: GPL (>= 2)
+Depends: R (>= 1.8.0), statmod, numDeriv
+NeedsCompilation: yes
+Packaged: 2017-08-30 19:34:18 UTC; Marco
